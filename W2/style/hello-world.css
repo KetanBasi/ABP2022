@@ -1,0 +1,40 @@
+table, tr, td {
+    border: 1px solid #544d66;
+}
+
+td:nth-child(2) {
+    text-align: right;
+}
+
+#pro {
+    color: #79ff6a;
+}
+
+.paragraf {
+    background-color: #544d66;
+    color: #e9e9e9;
+}
+
+h1 {
+    background-color: blue;
+}
+
+h1 {
+    background-color: coral;
+}
+
+a {
+    font-size: 30px;
+}
+
+a:hover {
+    color: #79c671;
+}
+
+a:active {
+    background-color: #aaa;
+}
+
+p.firstline::first-line {
+    color: magenta
+}

@@ -1,8 +1,22 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>ABP Minggu 2</title>
-        <link rel="stylesheet" href="style/hello-world.css">
+        <title>ABP Minggu 1</title>
+        <style>
+            table, tr, td {
+                border: 1px solid #544d66;
+            }
+            td:nth-child(2) {
+                text-align: right;
+            }
+            #pro {
+                color: #79ff6a;
+            }
+            .paragraf {
+                background-color: #544d66;
+                color: #e9e9e9;
+            }
+        </style>
     </head>
     <body>
         <h1>ABP Minggu 2</h1>
@@ -14,12 +28,6 @@
         </p>
         <p class="paragraf">
             E
-        </p>
-
-        <a href="#">Halo dunia</a>
-
-        <p class="firstline">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sit amet nibh id eros placerat pharetra. Ut dolor ipsum, bibendum sed accumsan id, sodales id ex. Quisque sit amet tellus feugiat, porta lorem sit amet, laoreet erat. Phasellus porta venenatis ipsum et sollicitudin. Quisque auctor pretium sapien eget facilisis. Morbi fermentum varius velit, sed tincidunt velit porttitor eget. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Cras mi massa, luctus sed nisl porta, dignissim ultricies neque. Morbi vel porttitor risus, et vestibulum orci. Nullam vel felis sed lacus semper scelerisque. Sed id gravida nibh. Morbi in commodo sapien. Nulla ac dapibus tortor, sit amet mollis massa. 
         </p>
 
         <!-- * Tabel -->
@@ -81,11 +89,6 @@
                 </div>
             </fieldset>
         </form>
-        
-        <script>
-            var nama = ["Djoe", "Noe"];
-            alert("Hello " + nama[0]);
-        </script>
     </body>
 
     <?php
