@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tugas W3</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet"> 
+        <style>
+            html {
+                font-family: 'Inter', sans-serif;
+                background-color: #202020;
+                color: #e0e0e0;
+            }
+            body {
+                width: max-content;
+                display: flex;
+            }
+            body > div {
+                padding: 0 2rem;
+            }
+            a { color: #11bdff; }
+            h1, h3, .monospace { font-family: 'Ubuntu Mono', monospace; }
+            h1 { font-size: 2.5rem; }
+            h3 { font-size: 1.3rem; }
+            button {
+                font-size: 1.5rem;
+                color: #202020;
+                font-family: 'Ubuntu Mono', monospace;
+                border: none;
+                padding: 2rem;
+            }
+            .monospace {
+                border: 1px solid #aaa;
+                padding: .2rem;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="toc">
+            <h1>Table of Contents</h1>
+            <ul>
+                <li><a href="#t1">Fungsi Console Lainnya</a></li>
+                <li><a href="#t2">Input 2 angka (max & min)</a></li>
+                <li><a href="#t3">5 method manipulasi array</a></li>
+                <li><a href="#t4">Eksperimen 5 methid manipulasi array pada object</a></li>
+            </ul>
+        </div>
+        
+        <br>
+        <hr>
+        <br>
+        
+        <div id="t1">
+            <h1>Fungsi Console Lainnya</h1>
+            <ul>
+                <li>
+                    <h3>console.clear()</h3>
+                    <p>Clear console</p>
+                </li>
+                <li>
+                    <h3>console.count(label)</h3>
+                    <p>Count berapa kali pemanggilan <span class="monospace">count()</span> dilakukan.</p>
+                    <p>Jika label diisi string, <span class="monospace">count()</span> akan menghitung berapa kali fungsi ini dipanggil dengan label tersebut.</p>
+                </li>
+                <li>
+                    <h3>console.countReset(label)</h3>
+                    <p>Reset counter dari <span class="monospace">console.count(label)</span></p>
+                </li>
+                <li>
+                    <h3>console.debug()</h3>
+                    <p>Output message to web console at debug log level</p>
+                </li>
+                <li>
+                    <h3>console.error()</h3>
+                    <p>Output message to web console at error log level</p>
+                </li>
+                <li>
+                    <h3>console.group()</h3>
+                    <p>Creates new inline group inside the web console log, pesan setelahnya akan tampil diindentasi satu level hingga <span class="monospace">console.groupEnd()</span> dipanggil</p>
+                </li>
+                <li>
+                    <h3>console.groupCollapsed()</h3>
+                    <p>Grouping seperti <span class="monospace">console.group()</span>, namun group ditampilkan collapsed</p>
+                </li>
+                <li>
+                    <h3>console.groupEnd()</h3>
+                    <p>Mengakhiri grouping / indenting dari <span class="monospace">console.group()</span></p>
+                </li>
+                <li>
+                    <h3>console.info()</h3>
+                    <p>Output message to web console at info log level</p>
+                </li>
+                <li>
+                    <h3>console.log()</h3>
+                    <p>Output message to web console</p>
+                </li>
+                <li>
+                    <h3>console.table()</h3>
+                    <p>Menampilkan <a href="https://www.google.com/search?q=tabular+data">data tabular</a> dalam tabel</p>
+                </li>
+                <li>
+                    <h3>console.time(nama)</h3>
+                    <p>Starts a timer, bisa diberi nama. Ketika <span class="monospace">console.timeEnd()</span> dengan nama yang sama, waktu akan ditampilkan.</p>
+                </li>
+                <li>
+                    <h3>console.timeEnd(nama)</h3>
+                    <p>Stops <span class="monospace">console.time(nama)</span></p>
+                </li>
+                <li>
+                    <h3>console.timeLog()</h3>
+                    <p>Menampilkan current value dari <span class="monospace">console.time()</span> yang baru dimulai</p>
+                </li>
+                <li>
+                    <h3>console.warn()</h3>
+                    <p>Output a warning message to web console</p>
+                </li>
+            </ul>
+        </div>
+        
+        <br>
+        <hr>
+        <br>
+
+        <div id="t2">
+            <h1>Deret ganjil & genap di antara 2 nilai</h1>
+            <button id="t2_start" onclick="t2_start()">Start</button>
+            <div id="t2_result">
+                <table>
+                    <tbody id="t2_target">
+                        <tr>
+                            <th>Ganjil</th>
+                            <th>Genap</th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <br>
+        <hr>
+        <br>
+
+        <div id="t3">
+            <h1>5 method manipulasi array</h1>
+            <p>Array: <span class="monospace">var fruits = ["apple", "banana", "cherry"];</span></p>
+            <ul>
+                <li>
+                    <h3>As a string <span class="monospace">toString()</span></h3>
+                    <p>Convert array to string, separated by comma</p>
+                    <p><span class="monospace">console.log(fruits.toString); // apple,banana,cherry</span></p>
+                </li>
+                <li>
+                    <h3>Slicing <span class="monospace">slice()</span></h3>
+                    <p><span class="monospace">console.log(fruits.slice(0,2)); // ["apple", "banana"]</span></p>
+                </li>
+                <li>
+                    <h3>Filter <span class="monospace">filter()</span></h3>
+                    <p><span class="monospace">console.log(fruits.filter((fruit) => fruit.charAt(0) === 'a')); // Array ["apple"]</span></p>
+                </li>
+                <li>
+                    <h3>Merging / concat <span class="monospace">concat()</span></h3>
+                    <p><span class="monospace">console.log(fruits.concat(["guava", "lemon"])); // Array ["apple", "banana", "cherry", "guava", "lemon"]</span></p>
+                </li>
+                <li>
+                    <h3>Reverse <span class="monospace">reverse()</span></h3>
+                    <p><span class="monospace">fruits.reverse();</span></p>
+                    <p><span class="monospace">console.log(fruits); // Array ["cherry", "banana", "apple"]</span></p>
+                </li>
+            </ul>
+        </div>
+        
+        <br>
+        <hr>
+        <br>
+
+        <div id="t4">
+            <h1>Eksperimen method manipulasi array pada object</h1>
+            <p>Object: <span class="monospace">var apple = { name: "apple", color: "red" };</span></p>
+            <ul>
+                <li>
+                    <h3><span class="monospace">toString()</span></h3>
+                    <p><span class="monospace">apple.toString(); // "[object Object]" </span></p>
+                </li>
+                <li>
+                    <h3><span class="monospace">slice()</span></h3>
+                    <p><span class="monospace">apple.slice(...); // (error not a function)</span></p>
+                </li>
+                <li>
+                    <h3><span class="monospace">filter()</span></h3>
+                    <p><span class="monospace">apple.filter(...); // (error not a function)</span></p>
+                </li>
+                <li>
+                    <h3><span class="monospace">concat()</span></h3>
+                    <p><span class="monospace">apple.concat(...); // (error not a function)</span></p>
+                </li>
+                <li>
+                    <h3><span class="monospace">reverse()</span></h3>
+                    <p><span class="monospace">apple.reverse(); // (error not a function)</span></p>
+                </li>
+            </ul>
+        </div>
+
+        <script type="text/javascript">
+            function create_node(type, val) {
+                var node = document.createElement(type);
+                node.textContent = val;
+                return node;
+            }
+            
+            function t2_start() {
+                var parser = new DOMParser();
+                var target = document.getElementById("t2_target");
+                var min_val = parseInt(prompt("Masukkan angka minimum:"));
+                var max_val = parseInt(prompt("Masukkan angka maximum:"));
+                var ganjil = [];
+                var genap = [];
+                
+                for (var i = min_val; i <= max_val; i++) {
+                    if (i % 2 == 0) { genap.push(i); }
+                    else { ganjil.push(i); }
+                }
+
+                var min_array_len = Math.max(ganjil.length, genap.length);
+                for (var i = 0; i < min_array_len; i++) {
+                    // var new_line = parser.parseFromString(`<tr><td>${ganjil[i] ? ganjil[i] : ""}</td><td>${genap[i] ? genap[i] : ""}</td></tr>\n`, "text/html").body.innerHTML;
+
+                    var row = document.createElement("tr");
+                    row.appendChild(create_node("td", (ganjil[i] ? ganjil[i] : "")));
+                    row.appendChild(create_node("td", (genap[i] ? genap[i] : "")));
+                    target.appendChild(row);
+                }
+            }
+        </script>
+
+    </body>
+</html>
