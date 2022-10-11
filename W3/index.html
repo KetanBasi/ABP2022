@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JS</title>
+        <style>
+            html {
+                font-size: 1.2rem;
+            }
+            button {
+                font-size: 2rem;
+                background-color: #666666;
+                color: #fff;
+                border-radius: 0;
+                border: none;
+                padding: 1rem;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <p>Halo Dunia!</p>
+        <button onclick="sayHello()">Klik Aku!</button>
+
+        <script type="text/javascript">
+            function sayHello() {
+                alert("Hello!");
+                document.write("<h1 id=\"pro\">Hello world!</h1>");
+                document.write("<br>");
+                document.write("<p>Saya sedang belajar JavaScript!</p>");
+                document.write("di <b>tult</b>");
+                document.write("<br>");
+                document.write("<button onclick=\"jsInnerHtml()\">Manipulasi JS</button>");
+            }
+
+            function jsInnerHtml() {
+                var hasil = document.getElementById("pro");
+                hasil.innerHTML = "Halo dunia";
+            }
+
+            function Person(firstName, lastName) {
+                this.firstName = firstName;
+                this.lastName = lastName;
+
+                this.fullName = function() {
+                    return `${this.firstName} ${this.lastName}`;
+                }
+
+                this.showName = function() {
+                    document.write(this.fullName());
+                }
+
+            }
+            
+            // console.log("Tes Output");
+            
+            // var yakin = confirm("Kunjungi gugel?");
+            // if (yakin) {
+            //     window.location = "https://www.google.com";
+            // } else {
+            //     document.write("<p>Canceled</p>");
+            // }
+
+            // var nama = prompt("Siapa nama kamu?", "");
+            // document.write("<p>Hello " + nama + "!");
+            
+            // var products = ["Senter", "Radio", "Antena", "Obeng"];
+            // var p_len = products.length;
+            // document.write("<h3>Daftar Produk</h3>");
+            // document.write("<ol>");
+            // for (let i = 0; i < p_len; i++) {
+            //     document.write(`<li>${products[i]}</li>`);
+            // }
+            // products.forEach((data) => {
+            //     document.write(`<li>${data}</li>`);
+            // })
+            // document.write("</ol>");
+
+            var car = {
+                type: "Fiat",
+                model: "500",
+                color: "white",
+
+                start: function() {
+                    console.log("ini method start");
+                },
+                drive: function() {
+                    console.log("ini method drive");
+                },
+                brake: function() {
+                    console.log("ini method brake");
+                },
+                stop: function() {
+                    console.log("ini method stop");
+                }
+            }
+
+            var person1 = new Person("Cahyo", "Al-Hazim");
+            var person2 = new Person("Tecnho", "Infinity");
+
+            person1.showName();
+            document.write("<br>");
+            person2.showName();
+            
+        </script>
+    </body>
+</html>
