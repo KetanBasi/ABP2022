@@ -11,39 +11,66 @@
     </head>
 
     <body>
+        @include('shared.hidden_svg')
+        @include('shared.navbar', ['nav_produk' => 'active'])
+
         <div class="container">
-            <header class="d-flex justify-content-center py-3 mb-4 border-bottom">
-                <ul class="nav nav-pills">
-                    <li class="nav-item"><a href="/" class="nav-link">"/"</a></li>
-                    <li class="nav-item"><a href="/hello" class="nav-link">Hello</a></li>
-                    <li class="nav-item"><a href="/produk" class="nav-link">Products</a></li>
-                    <li class="nav-item"><a href="/produk/create/" class="nav-link">Add Products</a></li>
-                </ul>
-            </header>
+            @include('shared.alert')
+
+            <div class="cf container-sm border p-3 rounded">
+                <form action="/produk/update/{{$detail->id}}" method="POST">
+                    @csrf
+                    <div class="mb-3">
+                        <label class="mb-3">Nama Produk</label>
+                        <input type="text" name="nama_produk" value="{{$detail->nama_produk}}" class="form-control"/>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="mb-3">Stok</label>
+                        <input type="number" name="stok" value="{{$detail->stok}}" class="form-control" min="0"/>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="mb-3">Harga</label>
+                        <input type="number" name="harga" value="{{$detail->harga}}" class="form-control" min="0"/>
+                    </div>
+
+                    <div class="mb-3">
+                        {{-- @php
+                            $_nama_brand = app\Http\Controllers\ProdukController::get_brand($detail->brand_id, 'nama_brand');
+                        @endphp --}}
+                        <label class="form-label">Brand</label>
+                        <select name="nama_brand" value="{{$detail->brand->nama_brand}}" class="form-control" list="BrandListOpt">
+                            <datalist id="BrandListOpt">
+                                @foreach($brand as $_brand)
+                                    <option {{($_brand->id == $detail->brand_id) ? 'Selected' : ''}}>{{ $_brand->nama_brand }}</option>
+                                @endforeach
+                            </datalist>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        {{-- @php
+                            $_nama_gudang = app\Http\Controllers\ProdukController::get_gudang($detail->gudang_id, 'nama_gudang');
+                        @endphp --}}
+                        <label class="form-label">Gudang</label>
+                        <select name="nama_gudang" value="{{$detail->gudang->nama_gudang}}" class="form-control" list="GudangListOpt">
+                            <datalist id="GudangListOpt">
+                                @foreach($gudang as $_gudang)
+                                    <option {{($_gudang->id == $detail->gudang_id) ? 'Selected' : ''}}>{{ $_gudang->nama_gudang }}</option>
+                                @endforeach
+                            </datalist>
+                        </select>
+                    </div>
+
+                    <div class="btn-group">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="button" class="btn btn-light" onclick="history.back()">Cancel</button>
+                    </div>
+                </form>
+            </div>
         </div>
-
-        <div class="cf container-sm border p-3 rounded">
-            <form action="/produk/update/{{$detail->id}}" method="POST">
-                @csrf
-                <div class="mb-3">
-                    <label class="mb-3">Nama Produk</label>
-                    <input type="text" name="nama_produk" value="{{$detail->nama_produk}}" class="form-control"/>
-                </div>
-
-                <div class="mb-3">
-                    <label class="mb-3">Stok</label>
-                    <input type="number" name="stok" value="{{$detail->stok}}" class="form-control"/>
-                </div>
-
-                <div class="btn-group">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                    <button type="button" class="btn btn-light" onclick="history.back()">Cancel</button>
-                </div>
-            </form>
-        </div>
-        <script src="sweetalert2.all.min.js"></script>
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+        @include('shared.js_sweetalert2')
+        @include('shared.js_bootstrap')
     </body>
 </html>
