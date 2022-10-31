@@ -10,7 +10,7 @@
                 min-width:50px;
                 width: max-content;
             }
-            th, td:nth-child(3) {
+            th, td:last-child {
                 text-align: center;
             }
             /* td:nth-child(2) {

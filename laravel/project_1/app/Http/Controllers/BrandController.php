@@ -14,6 +14,7 @@ class BrandController extends Controller
                         ->withCount('produk as jumlah_produk')
                         // ->withCount('produk->nama_gudang as jumlah_gudang')
                         ->get();
+        // dd($list[0]->gudang->count());
         return view('brand.index', compact('list'));
         // return $list;
     }

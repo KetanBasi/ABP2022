@@ -3,10 +3,7 @@
         <title>Brand</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
         <style>
-            /* table, th, td {
-                border: 1px solid black;
-            } */
-            th, td:nth-child(2) {
+            th, td:last-child {
                 text-align: center;
             }
         </style>
@@ -28,6 +25,7 @@
                     <thead class="table-dark">
                         <th>Nama Produk</th>
                         <th>Total Produk</th>
+                        <th>Total Gudang</th>
                         <th>Actions</th>
                     </thead>
                     <tbody>
@@ -35,6 +33,7 @@
                             <tr>
                                 <td>{{ $item->nama_brand }}</td>
                                 <td>{{ $item->jumlah_produk }}</td>
+                                <td>{{ $item->gudang->count() }}</td>
                                 <td>
                                     <div class="btn-group">
                                         <a href="/brand/edit/{{$item->id}}" onclick="" class="btn btn-warning">Edit</a>

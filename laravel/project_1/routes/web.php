@@ -17,13 +17,15 @@ use App\Http\Controllers\CustomerController;
 |
 */
 
-Route::get('/', function () {
+Route::get('/laravel', function () {
     return view('welcome');
 });
 
-Route::get('/hello', function () {
-    return "Hello World!";
-});
+// Route::get('/hello', function () {
+//     return "Hello World!";
+// });
+
+Route::get('/', function () { return view('home'); });
 
 Route::get('/produk', [ProdukController::class, 'index']);
 Route::post('/produk', [ProdukController::class, 'store']);
