@@ -6,6 +6,8 @@
     <title>ABP: Laravel, Bootstrap, and SweetAlert2</title>
 </head>
 <body>
-
+    <div class="container">
+        
+    </div>
 </body>
 </html>

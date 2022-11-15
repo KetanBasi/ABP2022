@@ -33,7 +33,7 @@
                             <tr>
                                 <td>{{ $item->nama_brand }}</td>
                                 <td>{{ $item->jumlah_produk }}</td>
-                                <td>{{ $item->gudang->count() }}</td>
+                                <td>{{ $item->gudang->unique()->count() }}</td>
                                 <td>
                                     <div class="btn-group">
                                         <a href="/brand/edit/{{$item->id}}" onclick="" class="btn btn-warning">Edit</a>

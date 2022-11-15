@@ -43,6 +43,7 @@ Route::get('/brand/delete/{id}', [BrandController::class, 'delete']);
 
 Route::get('/gudang', [GudangController::class, 'index']);
 Route::post('/gudang', [GudangController::class, 'store']);
+Route::get('/gudang/detail/{id}', [GudangController::class, 'details']);
 Route::get('/gudang/create', [GudangController::class, 'create']);
 Route::get('/gudang/edit/{id}', [GudangController::class, 'edit']);
 Route::post('/gudang/update/{id}', [GudangController::class, 'update']);

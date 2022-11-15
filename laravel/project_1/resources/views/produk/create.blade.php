@@ -36,22 +36,24 @@
 
                     <div class="mb-3">
                         <label class="form-label">Brand</label>
-                        <input type="text" name="nama_brand" class="form-control" placeholder="Brandless" list="BrandListOpt"/>
-                        <datalist id="BrandListOpt">
-                            @foreach($brand as $_brand)
-                                <option>{{ $_brand->nama_brand }}</option>
-                            @endforeach
-                        </datalist>
+                        <select name="brand_id" class="form-control" placeholder="Brandless" list="BrandListOpt">
+                            <datalist id="BrandListOpt">
+                                @foreach($brand as $_brand)
+                                    <option value="{{$_brand->id}}">{{ $_brand->nama_brand }}</option>
+                                @endforeach
+                            </datalist>
+                        </select>
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Gudang</label>
-                        <input type="text" name="nama_gudang" class="form-control" placeholder="Gudang A" list="GudangListOpt"/>
-                        <datalist id="GudangListOpt">
-                            @foreach($gudang as $_gudang)
-                                <option>{{ $_gudang->nama_gudang }}</option>
-                            @endforeach
-                        </datalist>
+                        <select name="gudang_id" class="form-control" placeholder="Gudang A" list="GudangListOpt">
+                            <datalist id="GudangListOpt">
+                                @foreach($gudang as $_gudang)
+                                    <option value="{{$_gudang->id}}">{{ $_gudang->nama_gudang }}</option>
+                                @endforeach
+                            </datalist>
+                        </select>
                     </div>
 
                     <div class="btn-group">

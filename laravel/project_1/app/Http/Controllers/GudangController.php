@@ -19,6 +19,14 @@ class GudangController extends Controller
         // return $list;
     }
 
+    public function details($id) {
+        $list = Gudang::with('produk')
+                        ->withSum('produk as jumlah_stok', 'stok')
+                        ->where('id', $id)
+                        ->get()[0];
+        return $list;
+    }
+
     public function create() {
         return view('gudang.create');
     }

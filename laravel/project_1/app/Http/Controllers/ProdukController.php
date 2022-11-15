@@ -41,18 +41,18 @@ class ProdukController extends Controller
         $produk->nama_produk = $req->nama_produk;
         $produk->stok        = $req->stok;
         $produk->harga       = $req->harga;
-        // $produk->brand_id = $req->brand_id;
+        $produk->brand_id    = $req->brand_id;
+        $produk->gudang_id   = $req->gudang_id;
         // $produk->brand_id    = Brand::select('id as brand_id')
         //                             ->where('nama_brand', '=', $req->nama_brand)
         //                             ->first()['brand_id'];
         // $produk->brand_id = $this->get_brand($req->nama_brand, 'id');
-        $produk->brand_id = $this->get_brand($req->nama_brand);
-        // $produk->gudang_id = $req->gudang_id;
+        // $produk->brand_id = $this->get_brand($req->nama_brand);
         // $produk->gudang_id   = Gudang::select('id as gudang_id')
         //                             ->where('nama_gudang', '=', $req->nama_gudang)
         //                             ->first()['gudang_id'];
         // $produk->gudang_id = $this->get_gudang($req->nama_gudang, 'id');
-        $produk->gudang_id = $this->get_gudang($req->nama_brand);
+        // $produk->gudang_id = $this->get_gudang($req->nama_gudang);
         $produk->save();
         session(['message' => 'Item added successfully']);
         return redirect('/produk');
@@ -70,15 +70,15 @@ class ProdukController extends Controller
         $cek = Produk::find($id);
         if ($cek) {
             $cek->nama_produk = $req->nama_produk;
-            $cek->stok = $req->stok;
-            $cek->harga = $req->harga;
-            // $cek->brand_id = $req->brand_id;
+            $cek->stok      = $req->stok;
+            $cek->harga     = $req->harga;
+            $cek->brand_id  = $req->brand_id;
+            $cek->gudang_id = $req->gudang_id;
             // $cek->brand_id = Brand::select('id as brand_id')
             //                         ->where('nama_brand', '=', $req->nama_brand)
             //                         ->first()['brand_id'];
             // $cek->brand_id = $this->get_brand($req->nama_brand, 'id');
-            $cek->brand_id = $this->get_brand($req->nama_brand);
-            // $cek->gudang_id = $req->gudang_id;
+            // $cek->brand_id = $this->get_brand($req->nama_brand);
             // $cek->gudang_id = Gudang::select('id as gudang_id')
             //                         ->where('nama_gudang', '=', $req->nama_gudang)
             //                         ->first()['gudang_id'];

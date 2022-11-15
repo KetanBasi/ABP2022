@@ -36,28 +36,22 @@
                     </div>
 
                     <div class="mb-3">
-                        {{-- @php
-                            $_nama_brand = app\Http\Controllers\ProdukController::get_brand($detail->brand_id, 'nama_brand');
-                        @endphp --}}
                         <label class="form-label">Brand</label>
-                        <select name="nama_brand" value="{{$detail->brand->nama_brand}}" class="form-control" list="BrandListOpt">
+                        <select name="brand_id" value="{{$detail->brand->nama_brand}}" class="form-control" list="BrandListOpt">
                             <datalist id="BrandListOpt">
                                 @foreach($brand as $_brand)
-                                    <option {{($_brand->id == $detail->brand_id) ? 'Selected' : ''}}>{{ $_brand->nama_brand }}</option>
+                                    <option value="{{$_brand->id}}" {{($_brand->id == $detail->brand_id) ? 'Selected' : ''}}>{{ $_brand->nama_brand }}</option>
                                 @endforeach
                             </datalist>
                         </select>
                     </div>
 
                     <div class="mb-3">
-                        {{-- @php
-                            $_nama_gudang = app\Http\Controllers\ProdukController::get_gudang($detail->gudang_id, 'nama_gudang');
-                        @endphp --}}
                         <label class="form-label">Gudang</label>
-                        <select name="nama_gudang" value="{{$detail->gudang->nama_gudang}}" class="form-control" list="GudangListOpt">
+                        <select name="gudang_id" value="{{$detail->gudang->nama_gudang}}" class="form-control" list="GudangListOpt">
                             <datalist id="GudangListOpt">
                                 @foreach($gudang as $_gudang)
-                                    <option {{($_gudang->id == $detail->gudang_id) ? 'Selected' : ''}}>{{ $_gudang->nama_gudang }}</option>
+                                    <option value="{{$_gudang->id}}" {{($_gudang->id == $detail->gudang_id) ? 'Selected' : ''}}>{{ $_gudang->nama_gudang }}</option>
                                 @endforeach
                             </datalist>
                         </select>
