@@ -11,7 +11,7 @@ class ProdukController extends Controller
 {
     public function index() {
         // $list = Produk::all();
-        $list = Produk::with('brand:id,nama_brand', 'gudang:id,nama_gudang')->get();
+        $list = Produk::with('brand:id,nama_brand', 'gudang:id,nama_gudang,alamat')->get();
         // $list = Produk::join('brand', 'produk.brand_id', '=', 'brand.id')
         //             ->join('gudang', 'produk.gudang_id', '=', 'gudang.id')
         //             ->all();
@@ -33,6 +33,7 @@ class ProdukController extends Controller
         // else if ($req->harga == null)       $err_it = "Harga";
         // else if ($req->nama_brand == null)  $err_it = "Brand";
         // else if ($req->nama_gudang == null) $err_it = "Gudang";
+        // return $req;
         if (!$this->validate_attr($req)) {
             // session(['error' => $err_it.' cannot be empty.']);
             return redirect('/produk/create');
@@ -82,8 +83,8 @@ class ProdukController extends Controller
             // $cek->gudang_id = Gudang::select('id as gudang_id')
             //                         ->where('nama_gudang', '=', $req->nama_gudang)
             //                         ->first()['gudang_id'];
-            $cek->gudang_id = $this->get_gudang($req->nama_gudang);
-            return $cek;
+            // $cek->gudang_id = $this->get_gudang($req->nama_gudang);
+            // return $cek;
             $cek->save();
             session(['message' => 'Item edited successfully']);
         } else {
@@ -109,8 +110,8 @@ class ProdukController extends Controller
         if      ($obj->nama_produk == null) $err_it = "Nama Produk";
         else if ($obj->stok        == null) $err_it = "Stok";
         else if ($obj->harga       == null) $err_it = "Harga";
-        else if ($obj->nama_brand  == null) $err_it = "Brand";
-        else if ($obj->nama_gudang == null) $err_it = "Gudang";
+        else if ($obj->brand_id    == null) $err_it = "Brand";
+        else if ($obj->gudang_id   == null) $err_it = "Gudang";
 
         // FIXME - Brand & Gudang Validation
         // else if ($this->get_brand( $obj->nama_brand,  'id') == null)

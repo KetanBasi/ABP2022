@@ -26,8 +26,8 @@ class CustomerController extends Controller
         } else {
             $customer = new Customer();
             $customer->nama_customer = $req->nama_customer;
-            $customer->alamat = $req->alamat;
-            $customer->no_hp = $req->no_hp;
+            $customer->alamat        = $req->alamat;
+            $customer->no_hp         = $req->no_hp;
             $customer->save();
             session(['message' => 'Item added successfully']);
             return redirect('/customer');
@@ -46,8 +46,8 @@ class CustomerController extends Controller
         $cek = Customer::find($id);
         if ($cek) {
             $cek->nama_customer = $req->nama_customer;
-            $cek->alamat = $req->alamat;
-            $cek->no_hp = $req->no_hp;
+            $cek->alamat        = $req->alamat;
+            $cek->no_hp         = $req->no_hp;
             $cek->save();
             session(['message' => 'Item edited successfully']);
         } else {

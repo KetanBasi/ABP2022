@@ -1,103 +1,196 @@
-<html>
-    <head>
-        <title>List Produk</title>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-        <style>
-            /* table, th, td {
-                border: 1px solid black;
-            } */
-            th:nth-child(2), td:nth-child(2) {
-                min-width:50px;
-                width: max-content;
-            }
-            th, td:last-child {
-                text-align: center;
-            }
-            td:nth-child(2) {
-                text-align: right;
-            }
-        </style>
-    </head>
-    <body class="">
-        @include('shared.hidden_svg')
+@extends('main')
 
-        @include('shared.navbar', ['nav_produk' => 'active'])
+{{-- SECTION: Variables --}}
+@section('breadcrumb_current_location', 'Produk'     )
+@section('table_title'                , 'List Produk')
+{{-- !SECTION: Variables --}}
 
-        <div class="container">
-            @include('shared.alert')
+{{-- SECTION: Override --}}
 
-            <a href="/produk/create" class="">
-                <button type="button" class="btn btn-primary mb-3">+ Add Item</button>
-            </a>
+{{-- ANCHOR: Navigation --}}
+@section('nav_list')
+    @include('base.components.nav_list', ['active' => 'produk'])
+@endsection
 
-            @if (count($list) > 0)
-                <table class="table table-bordered">
-                    @csrf
-                    <thead class="table-dark">
-                        <th>Nama Produk</th>
-                        <th>Stok</th>
-                        <th>Harga</th>
-                        <th>Brand</th>
-                        <th>Gudang</th>
-                        <th>Actions</th>
-                    </thead>
-                    <tbody>
-                        @foreach ($list as $item)
-                            <tr>
-                                <td>{{ $item->nama_produk }}</td>
-                                <td>{{ $item->stok }}</td>
-                                <td>{{ $item->harga }}</td>
-                                <td>{{ $item->brand->nama_brand ?? '' }}</td>
-                                <td>{{ $item->gudang->nama_gudang ?? '' }}</td>
-                                {{-- <td>
-                                    @php
-                                        $_nama_brand = app\Http\Controllers\ProdukController::get_brand($item->brand_id, 'nama_brand');
-                                    @endphp
-                                    {{ $_nama_brand }}
-                                </td>
-                                <td>
-                                    @php
-                                        $_nama_gudang = app\Http\Controllers\ProdukController::get_gudang($item->gudang_id, 'nama_gudang');
-                                    @endphp
-                                    {{ $_nama_gudang }}
-                                </td> --}}
-                                <td>
-                                    <div class="btn-group">
-                                        <a href="/produk/edit/{{$item->id}}" onclick="" class="btn btn-warning">Edit</a>
-                                        <a onclick="cod('{{$item->id}}')" class="btn btn-danger">Delete</a>
-                                    </div>
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            @else
-                @include('shared.no_items')
-            @endif
+{{-- ANCHOR: Main Content --}}
+@section('main_content')
+    <div class="container-fluid py-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="card my-4">
+
+                    <!-- ANCHOR: Table Title -->
+                    <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                        <div class="bg-gradient-primary shadow-primary border-radius-lg p-4 row justify-content-between d-flex">
+                            <h6 class="text-white text-capitalize col-4 m-0 lh-1 align-self-center">@yield('table_title')</h6>
+                            <a  class="btn bg-gradient-light border-radius-lg p-2 m-0 col-1 font-weight-bold text-primary position-absolute align-self-center end-0" href="/produk/create" onclick="" style="width: max-content;">
+                                + Add Item
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- SECTION: Table Data -->
+                    <div class="card-body px-0 pb-2">
+
+                        <div class="container-fluid py-0">
+                            @include('shared.alert')
+                        </div>
+
+                        <div class="table-responsive p-0">
+
+                            {{-- NOTE: Inline style used for hide empty line caused by '@csrf' --}}
+                            <table class="table align-items-center mb-0" style="position: relative; top: -1px;">
+                                @csrf
+
+                                <!-- ANCHOR: Table Header -->
+                                @section('table_header')
+                                    <thead>
+                                        <tr>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama Produk</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-3">Harga</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Stok</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Gudang</th>
+                                            <th class="text-secondary opacity-7"></th>
+                                        </tr>
+                                    </thead>
+                                @show
+                                {{-- @endsection --}}
+
+
+                                <!-- SECTION: Table Content -->
+                                @section('table_content')
+                                    <tbody>
+
+                                        {{-- <tr>
+
+                                            <td>
+                                                <div class="d-flex px-2 py-1">
+                                                    <div>
+                                                        <img src="{{ asset('img/team-2.jpg') }}" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
+                                                    </div>
+                                                    <div class="d-flex flex-column justify-content-center">
+                                                        <h6 class="mb-0 text-sm">John Michael</h6>
+                                                        <p class="text-xs text-secondary mb-0">john@creative-tim.com</p>
+                                                    </div>
+                                                </div>
+                                            </td>
+
+                                            <td>
+                                                <p class="text-xs font-weight-bold mb-0">Manager</p>
+                                                <p class="text-xs text-secondary mb-0">Organization</p>
+                                            </td>
+
+                                            <td class="align-middle text-center text-sm">
+                                                <span class="badge badge-sm bg-gradient-success">Online</span>
+                                            </td>
+
+                                            <td class="align-middle text-center">
+                                                <span class="text-secondary text-xs font-weight-bold">23/04/18</span>
+                                            </td>
+
+                                            <td class="align-middle">
+                                                <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                                                    Edit
+                                                </a>
+                                            </td>
+
+                                        </tr> --}}
+
+                                        @foreach(($list ?? []) as $item)
+                                            <tr>
+
+                                                <!-- ANCHOR: Col. 1 - Nama Produk -->
+                                                <td>
+                                                    <div class="d-flex px-2 py-1">
+
+                                                        <!-- ANCHOR: Img Produk -->
+                                                        <div>
+                                                            <img src="{{ asset('img/team-2.jpg') }}" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
+                                                        </div>
+
+                                                        <!-- ANCHOR: Produk Data -->
+                                                        <div class="d-flex flex-column justify-content-center">
+                                                            <h6 class="mb-0 text-sm">{{ $item->nama_produk }}</h6>
+                                                            <p class="text-xs text-secondary mb-0">{{ $item->brand->nama_brand ?? '' }}</p>
+                                                        </div>
+
+                                                    </div>
+                                                </td>
+
+                                                <!-- ANCHOR: Col. 2 - Harga -->
+                                                <td>
+                                                    <div class="d-flex flex-column px-2 py-1">
+                                                        <p class="text-xs font-weight-bold mb-0">{{ $item->harga }}</p>
+                                                        <p class="text-xs text-secondary mb-0">Total: {{ $item->harga * $item->stok }}</p>
+                                                    </div>
+                                                </td>
+
+                                                <!-- ANCHOR: Col. 3 - Stok -->
+                                                <td class="align-middle text-center text-sm">
+                                                    <span class="badge badge-sm {{$item->stok > 0 ? 'bg-gradient-success' : 'bg-gradient-secondary' }}">{{ $item->stok }}</span>
+                                                </td>
+
+                                                <!-- ANCHOR: Col. 4 - Gudang -->
+                                                <td class="align-middle text-center">
+                                                    <div class="d-flex flex-column justify-content-center">
+                                                        <p class="text-sm mb-0 font-weight-bold">{{ $item->gudang->nama_gudang ?? '' }}</p>
+                                                        <p class="text-xs mb-0 text-secondary">{{ $item->gudang->alamat ?? '' }}</p>
+                                                    </div>
+                                                </td>
+
+                                                <!-- ANCHOR: Col. 5 - Actions -->
+                                                <td class="align-middle">
+                                                    {{-- <a href="javascript:;" class="text-secondary font-weight-bold text-xs">
+                                                        Edit
+                                                    </a> --}}
+                                                    <a class="btn bg-gradient-warning border-radius-lg p-2 text-light text-xs" href="/produk/edit/{{$item->id}}" onclick="">Edit</a>
+                                                    <a class="btn bg-gradient-danger border-radius-lg p-2 text-light text-xs" onclick="cod('{{$item->id}}')">Delete</a>
+                                                </td>
+
+                                            </tr>
+                                        @endforeach
+
+                                    </tbody>
+                                @show
+                                {{-- @endsection --}}
+                                <!-- !SECTION: Table Content -->
+
+                            </table>
+                        </div>
+                    </div>
+                    <!-- !SECTION: Table Data -->
+
+                </div>
+            </div>
         </div>
-        <script>
-            function cod(id) {
-                Swal.fire({
-                    title: "Hapus item?",
-                    text: "Item tidak dapat dikembalikan setelah dihapus",
-                    icon: "warning",
-                    showCancelButton: true,
-                    confirmButtonColor: "#3085d6",
-                    cancelButtonColor: "#d33",
-                    confirmButtonText: "Ye"
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        Swal.fire (
-                            "Deleted!",
-                            "Item telah dihapus.",
-                            "Success"
-                        );
-                        document.location = `/produk/delete/${id}`;
-                    }
-                })
-            }
-        </script>
-        @include('shared.js_sweetalert2')
-        @include('shared.js_bootstrap')
-    </body>
-</html>
+    </div>
+@endsection
+
+@section('scripts')
+    @parent
+
+    <script>
+        function cod(id) {
+            Swal.fire({
+                title: "Hapus item?",
+                text: "Item tidak dapat dikembalikan setelah dihapus",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Ye"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire (
+                        "Deleted!",
+                        "Item telah dihapus.",
+                        "Success"
+                    );
+                    document.location = `/produk/delete/${id}`;
+                }
+            })
+        }
+    </script>
+@endsection
+
+{{-- !SECTION: Override --}}

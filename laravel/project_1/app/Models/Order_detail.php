@@ -9,4 +9,8 @@ class Order_detail extends Model
 {
     use HasFactory;
     protected $table = "table_order_detail";
+
+    public function produk() {
+        return $this->belongsTo(Produk::class, 'produk_id', 'id')->with('brand');
+    }
 }

@@ -1,37 +1,63 @@
-<html>
-    <head>
-        <title>Create Brand</title>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-        <style>
-            .cf {
-                max-width: 500px;
-            }
-        </style>
-    </head>
+@extends('brand.index')
 
-    <body>
-        @include('shared.hidden_svg')
-        @include('shared.navbar', ['nav_brand' => 'active'])
+@section('form_title', 'Add Brand')
 
-        <div class="container">
-            @include('shared.alert')
+@section('custom_internal_css')
+    <style>
+        .input-group.form-floating > select.form-control {
+            /*  */
+        }
+        .input-group.form-floating > label.form-label {
+            transform: scale(0.9) translateY(-1.4rem);
+        }
+    </style>
+@endsection
 
-            <div class="cf container-sm border p-3 rounded m-auto">
-                <form action="/brand" method="POST" class="">
-                    @csrf
-                    <div class="mb-3">
-                        <label class="form-label">Nama Brand</label>
-                        <input type="text" name="nama_brand" class="form-control" placeholder="Aque"/>
+@section('main_content')
+<div class="container-fluid py-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="card my-4">
+
+                <!-- ANCHOR: Table Title -->
+                <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                    <div class="bg-gradient-primary shadow-primary border-radius-lg p-4 row justify-content-between">
+                        <h6 class="text-white text-capitalize col-4 m-0 lh-1 align-self-center">@yield('form_title')</h6>
+                    </div>
+                </div>
+
+                <!-- SECTION: Table Data -->
+                <div class="card-body px-0 pb-2">
+
+                    <div class="container-fluid py-0">
+                        @include('shared.alert')
                     </div>
 
-                    <div class="btn-group">
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                        <button type="button" class="btn btn-light" onclick="history.back()">Cancel</button>
+                    <div class="container-fluid table-responsive p-0">
+
+                        <form action="/brand" method="POST" class="align-items-center mb-0 p-3" style="">
+                            @csrf
+
+                            <div class="ms-md auto pe-md-3 d-flex align-items-center mb-4">
+                                <div class="input-group input-group-outline">
+                                    <label class="form-label">Nama Brand</label>
+                                    <input type="text" name="nama_brand" class="form-control" />
+                                </div>
+                            </div>
+
+                            <div class="btn-group">
+                                <button type="sumbit" class="btn btn-primary bg-gradient-primary">Submit</button>
+                                <button type="button" class="btn bg-gradient-light" onclick="history.back()">Cancel</button>
+                            </div>
+
+                        </form>
+
                     </div>
-                </form>
+                </div>
+                <!-- !SECTION: Table Data -->
+
             </div>
         </div>
-        @include('shared.js_sweetalert2')
-        @include('shared.js_bootstrap')
-    </body>
-</html>
+    </div>
+</div>
+@endsection

@@ -1,70 +1,103 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Produk</title>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-        <style>
-            .cf {
-                max-width: 500px;
-            }
-        </style>
-    </head>
+@extends('produk.index')
 
-    <body>
-        @include('shared.hidden_svg')
-        @include('shared.navbar', ['nav_produk' => 'active'])
+@section('form_title', 'Edit Item')
 
-        <div class="container">
-            @include('shared.alert')
+@section('custom_internal_css')
+    <style>
+        .input-group.form-floating > select.form-control {
+            /*  */
+        }
+        .input-group.form-floating > label.form-label {
+            transform: scale(0.9) translateY(-1.4rem);
+        }
+    </style>
+@endsection
 
-            <div class="cf container-sm border p-3 rounded">
-                <form action="/produk/update/{{$detail->id}}" method="POST">
-                    @csrf
-                    <div class="mb-3">
-                        <label class="mb-3">Nama Produk</label>
-                        <input type="text" name="nama_produk" value="{{$detail->nama_produk}}" class="form-control"/>
+@section('main_content')
+<div class="container-fluid py-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="card my-4">
+
+                <!-- ANCHOR: Table Title -->
+                <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                    <div class="bg-gradient-primary shadow-primary border-radius-lg p-4 row justify-content-between">
+                        <h6 class="text-white text-capitalize col-4 m-0 lh-1 align-self-center">@yield('form_title')</h6>
+                    </div>
+                </div>
+
+                <!-- SECTION: Table Data -->
+                <div class="card-body px-0 pb-2">
+
+                    <div class="container-fluid py-0">
+                        @include('shared.alert')
                     </div>
 
-                    <div class="mb-3">
-                        <label class="mb-3">Stok</label>
-                        <input type="number" name="stok" value="{{$detail->stok}}" class="form-control" min="0"/>
-                    </div>
+                    <div class="container-fluid table-responsive p-0">
 
-                    <div class="mb-3">
-                        <label class="mb-3">Harga</label>
-                        <input type="number" name="harga" value="{{$detail->harga}}" class="form-control" min="0"/>
-                    </div>
+                        <form action="/produk/update/{{$detail->id}}" method="POST" class="align-items-center mb-0 p-3" style="">
+                            @csrf
 
-                    <div class="mb-3">
-                        <label class="form-label">Brand</label>
-                        <select name="brand_id" value="{{$detail->brand->nama_brand}}" class="form-control" list="BrandListOpt">
-                            <datalist id="BrandListOpt">
-                                @foreach($brand as $_brand)
-                                    <option value="{{$_brand->id}}" {{($_brand->id == $detail->brand_id) ? 'Selected' : ''}}>{{ $_brand->nama_brand }}</option>
-                                @endforeach
-                            </datalist>
-                        </select>
-                    </div>
+                            <div class="ms-md auto pe-md-3 d-flex align-items-center mb-4">
+                                <div class="input-group input-group-outline is-filled">
+                                    <label class="form-label">Nama Produk</label>
+                                    <input type="text" name="nama_produk" value="{{$detail->nama_produk}}" class="form-control" />
+                                </div>
+                            </div>
 
-                    <div class="mb-3">
-                        <label class="form-label">Gudang</label>
-                        <select name="gudang_id" value="{{$detail->gudang->nama_gudang}}" class="form-control" list="GudangListOpt">
-                            <datalist id="GudangListOpt">
-                                @foreach($gudang as $_gudang)
-                                    <option value="{{$_gudang->id}}" {{($_gudang->id == $detail->gudang_id) ? 'Selected' : ''}}>{{ $_gudang->nama_gudang }}</option>
-                                @endforeach
-                            </datalist>
-                        </select>
-                    </div>
+                            <div class="ms-md auto pe-md-3 d-flex align-items-center mb-4">
+                                <div class="input-group input-group-outline form-floating" style="">
+                                    <select name="brand_id" id="brand_id" value={{$detail->brand_id}} class="form-control form-select" list="brand_list_opt" aria-label="Floating Default label select example">
+                                        <datalist id="brand_list_opt">
+                                            @foreach($brand as $_brand)
+                                                <option value={{$_brand->id}} {{($_brand->id == $detail->brand_id) ? 'Selected' : ''}}>{{ $_brand->nama_brand }}</option>
+                                            @endforeach
+                                        </datalist>
+                                    </select>
+                                    <label class="form-label" for="brand_id">Brand</label>
+                                </div>
+                            </div>
 
-                    <div class="btn-group">
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                        <button type="button" class="btn btn-light" onclick="history.back()">Cancel</button>
+                            <div class="ms-md auto pe-md-3 d-flex align-items-center mb-4">
+                                <div class="input-group input-group-outline is-filled">
+                                    <label class="form-label">Harga</label>
+                                    <input type="number" name="harga" value={{$detail->harga}} class="form-control" min="0" />
+                                </div>
+                            </div>
+
+                            <div class="ms-md auto pe-md-3 d-flex align-items-center mb-4">
+                                <div class="input-group input-group-outline is-filled">
+                                    <label class="form-label">Stok</label>
+                                    <input type="number" name="stok" value={{$detail->stok}} class="form-control" min="0" />
+                                </div>
+                            </div>
+
+                            <div class="ms-md auto pe-md-3 d-flex align-items-center mb-4">
+                                <div class="input-group input-group-outline form-floating" style="">
+                                    <label class="form-label" for="gudang_id">Gudang</label>
+                                    <select name="gudang_id" id="gudang_id" value="{{$detail->gudang_id}}" class="form-control form-select" list="gudang_list_opt" aria-label="Floating Default label select example">
+                                        <datalist id="gudang_list_opt">
+                                            @foreach($gudang as $_gudang)
+                                                <option value={{$_gudang->id}} {{($_gudang->id == $detail->gudang_id) ? 'Selected' : ''}}>{{ $_gudang->nama_gudang }}</option>
+                                            @endforeach
+                                        </datalist>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="btn-group">
+                                <button type="sumbit" class="btn btn-primary bg-gradient-primary">Submit</button>
+                                <button type="button" class="btn bg-gradient-light" onclick="history.back()">Cancel</button>
+                            </div>
+
+                        </form>
+
                     </div>
-                </form>
+                </div>
+                <!-- !SECTION: Table Data -->
+
             </div>
         </div>
-        @include('shared.js_sweetalert2')
-        @include('shared.js_bootstrap')
-    </body>
-</html>
+    </div>
+</div>
+@endsection
