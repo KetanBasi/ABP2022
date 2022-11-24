@@ -21,7 +21,7 @@ class DashboardController extends Controller
 
         foreach ($produk as $item) {
             $produk_sum  += $item->stok;
-            $total_asset += $item->harga;
+            $total_asset += ($item->harga * $item->stok);
         }
 
         $data = new stdClass();
