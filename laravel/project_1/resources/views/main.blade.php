@@ -266,207 +266,207 @@
                 </div>
 
                 <!-- SECTION: First Row (Inventory Summary) -->
-                <div class="row mb-5">
+                    <div class="row mb-5">
 
-                    <!-- ANCHOR: Products -->
-                    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-                        <div class="card">
-                            <div class="card-header p-3 pt-2">
-                                <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
-                                    <i class="material-icons opacity-10">inventory_2</i>
+                        <!-- ANCHOR: Products -->
+                        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+                            <div class="card">
+                                <div class="card-header p-3 pt-2">
+                                    <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
+                                        <i class="material-icons opacity-10">inventory_2</i>
+                                    </div>
+                                    <div class="text-end pt-1">
+                                        <p class="text-sm mb-0 text-capitalize">Total Items</p>
+                                        <h4 class="mb-0">{{ $data->produk->count ?? '??' }}</h4>
+                                    </div>
                                 </div>
-                                <div class="text-end pt-1">
-                                    <p class="text-sm mb-0 text-capitalize">Total Items</p>
-                                    <h4 class="mb-0">{{ $data->produk->count ?? '??' }}</h4>
+                                <hr class="dark horizontal my-0">
+                                <div class="card-footer p-3">
+                                    <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+55% </span>than last week</p>
                                 </div>
-                            </div>
-                            <hr class="dark horizontal my-0">
-                            <div class="card-footer p-3">
-                                <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+55% </span>than last week</p>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- ANCHOR: Brands -->
-                    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-                        <div class="card">
-                            <div class="card-header p-3 pt-2">
-                                <div class="icon icon-lg icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4 position-absolute">
-                                    <i class="material-icons opacity-10">label</i>
+                        <!-- ANCHOR: Brands -->
+                        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+                            <div class="card">
+                                <div class="card-header p-3 pt-2">
+                                    <div class="icon icon-lg icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4 position-absolute">
+                                        <i class="material-icons opacity-10">label</i>
+                                    </div>
+                                    <div class="text-end pt-1">
+                                        <p class="text-sm mb-0 text-capitalize">Total Brands</p>
+                                        <h4 class="mb-0">{{ $data->brand_count ?? '??' }}</h4>
+                                    </div>
                                 </div>
-                                <div class="text-end pt-1">
-                                    <p class="text-sm mb-0 text-capitalize">Total Brands</p>
-                                    <h4 class="mb-0">{{ $data->brand_count ?? '??' }}</h4>
+                                <hr class="dark horizontal my-0">
+                                <div class="card-footer p-3">
+                                    <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+3% </span>than last month</p>
                                 </div>
-                            </div>
-                            <hr class="dark horizontal my-0">
-                            <div class="card-footer p-3">
-                                <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+3% </span>than last month</p>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- ANCHOR: Warehouse -->
-                    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-                        <div class="card">
-                            <div class="card-header p-3 pt-2">
-                                <div class="icon icon-lg icon-shape bg-gradient-success shadow-success text-center border-radius-xl mt-n4 position-absolute">
-                                    <i class="material-icons opacity-10">warehouse</i>
+                        <!-- ANCHOR: Warehouse -->
+                        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+                            <div class="card">
+                                <div class="card-header p-3 pt-2">
+                                    <div class="icon icon-lg icon-shape bg-gradient-success shadow-success text-center border-radius-xl mt-n4 position-absolute">
+                                        <i class="material-icons opacity-10">warehouse</i>
+                                    </div>
+                                    <div class="text-end pt-1">
+                                        <p class="text-sm mb-0 text-capitalize">Total Warehouse</p>
+                                        <h4 class="mb-0">{{ $data->gudang_count ?? '??' }}</h4>
+                                    </div>
                                 </div>
-                                <div class="text-end pt-1">
-                                    <p class="text-sm mb-0 text-capitalize">Total Warehouse</p>
-                                    <h4 class="mb-0">{{ $data->gudang_count ?? '??' }}</h4>
+                                <hr class="dark horizontal my-0">
+                                <div class="card-footer p-3">
+                                    <p class="mb-0"><span class="text-danger text-sm font-weight-bolder">-2%</span> than yesterday</p>
                                 </div>
-                            </div>
-                            <hr class="dark horizontal my-0">
-                            <div class="card-footer p-3">
-                                <p class="mb-0"><span class="text-danger text-sm font-weight-bolder">-2%</span> than yesterday</p>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- ANCHOR: Sales -->
-                    <div class="col-xl-3 col-sm-6">
-                        <div class="card">
-                            <div class="card-header p-3 pt-2">
-                                <div class="icon icon-lg icon-shape bg-gradient-info shadow-info text-center border-radius-xl mt-n4 position-absolute">
-                                    <i class="material-icons opacity-10">payments</i>
+                        <!-- ANCHOR: Sales -->
+                        <div class="col-xl-3 col-sm-6">
+                            <div class="card">
+                                <div class="card-header p-3 pt-2">
+                                    <div class="icon icon-lg icon-shape bg-gradient-info shadow-info text-center border-radius-xl mt-n4 position-absolute">
+                                        <i class="material-icons opacity-10">payments</i>
+                                    </div>
+                                    <div class="text-end pt-1">
+                                        <p class="text-sm mb-0 text-capitalize">Total Assets</p>
+                                        <h4 class="mb-0">${{ $data->total_asset ?? '??' }}</h4>
+                                    </div>
                                 </div>
-                                <div class="text-end pt-1">
-                                    <p class="text-sm mb-0 text-capitalize">Total Assets</p>
-                                    <h4 class="mb-0">${{ $data->total_asset ?? '??' }}</h4>
+                                <hr class="dark horizontal my-0">
+                                <div class="card-footer p-3">
+                                    <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+5% </span>than yesterday</p>
                                 </div>
-                            </div>
-                            <hr class="dark horizontal my-0">
-                            <div class="card-footer p-3">
-                                <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+5% </span>than yesterday</p>
                             </div>
                         </div>
-                    </div>
 
-                </div>
+                    </div>
                 <!-- !SECTION: First Row (Inventory Summary) -->
 
                 <!-- SECTION: Second Row (Selling Summary) -->
-                {{-- <div class="row mb-5">
+                    {{-- <div class="row mb-5">
 
-                    <!-- ANCHOR: Products -->
-                    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-                        <div class="card">
-                            <div class="card-header p-3 pt-2">
-                                <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
-                                    <i class="material-icons opacity-10">inventory_2</i>
+                        <!-- ANCHOR: Products -->
+                        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+                            <div class="card">
+                                <div class="card-header p-3 pt-2">
+                                    <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
+                                        <i class="material-icons opacity-10">inventory_2</i>
+                                    </div>
+                                    <div class="text-end pt-1">
+                                        <p class="text-sm mb-0 text-capitalize">Total Items</p>
+                                        <h4 class="mb-0">$53k</h4>
+                                    </div>
                                 </div>
-                                <div class="text-end pt-1">
-                                    <p class="text-sm mb-0 text-capitalize">Total Items</p>
-                                    <h4 class="mb-0">$53k</h4>
+                                <hr class="dark horizontal my-0">
+                                <div class="card-footer p-3">
+                                    <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+55% </span>than last week</p>
                                 </div>
-                            </div>
-                            <hr class="dark horizontal my-0">
-                            <div class="card-footer p-3">
-                                <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+55% </span>than last week</p>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- ANCHOR: Users -->
-                    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-                        <div class="card">
-                            <div class="card-header p-3 pt-2">
-                                <div class="icon icon-lg icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4 position-absolute">
-                                    <i class="material-icons opacity-10">person</i>
+                        <!-- ANCHOR: Users -->
+                        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+                            <div class="card">
+                                <div class="card-header p-3 pt-2">
+                                    <div class="icon icon-lg icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4 position-absolute">
+                                        <i class="material-icons opacity-10">person</i>
+                                    </div>
+                                    <div class="text-end pt-1">
+                                        <p class="text-sm mb-0 text-capitalize">Today's Users</p>
+                                        <h4 class="mb-0">2,300</h4>
+                                    </div>
                                 </div>
-                                <div class="text-end pt-1">
-                                    <p class="text-sm mb-0 text-capitalize">Today's Users</p>
-                                    <h4 class="mb-0">2,300</h4>
+                                <hr class="dark horizontal my-0">
+                                <div class="card-footer p-3">
+                                    <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+3% </span>than last month</p>
                                 </div>
-                            </div>
-                            <hr class="dark horizontal my-0">
-                            <div class="card-footer p-3">
-                                <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+3% </span>than last month</p>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- ANCHOR: Clients -->
-                    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-                        <div class="card">
-                            <div class="card-header p-3 pt-2">
-                                <div class="icon icon-lg icon-shape bg-gradient-success shadow-success text-center border-radius-xl mt-n4 position-absolute">
-                                    <i class="material-icons opacity-10">person</i>
+                        <!-- ANCHOR: Clients -->
+                        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+                            <div class="card">
+                                <div class="card-header p-3 pt-2">
+                                    <div class="icon icon-lg icon-shape bg-gradient-success shadow-success text-center border-radius-xl mt-n4 position-absolute">
+                                        <i class="material-icons opacity-10">person</i>
+                                    </div>
+                                    <div class="text-end pt-1">
+                                        <p class="text-sm mb-0 text-capitalize">New Clients</p>
+                                        <h4 class="mb-0">3,462</h4>
+                                    </div>
                                 </div>
-                                <div class="text-end pt-1">
-                                    <p class="text-sm mb-0 text-capitalize">New Clients</p>
-                                    <h4 class="mb-0">3,462</h4>
+                                <hr class="dark horizontal my-0">
+                                <div class="card-footer p-3">
+                                    <p class="mb-0"><span class="text-danger text-sm font-weight-bolder">-2%</span> than yesterday</p>
                                 </div>
-                            </div>
-                            <hr class="dark horizontal my-0">
-                            <div class="card-footer p-3">
-                                <p class="mb-0"><span class="text-danger text-sm font-weight-bolder">-2%</span> than yesterday</p>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- ANCHOR: Sales -->
-                    <div class="col-xl-3 col-sm-6">
-                        <div class="card">
-                            <div class="card-header p-3 pt-2">
-                                <div class="icon icon-lg icon-shape bg-gradient-info shadow-info text-center border-radius-xl mt-n4 position-absolute">
-                                    <i class="material-icons opacity-10">weekend</i>
+                        <!-- ANCHOR: Sales -->
+                        <div class="col-xl-3 col-sm-6">
+                            <div class="card">
+                                <div class="card-header p-3 pt-2">
+                                    <div class="icon icon-lg icon-shape bg-gradient-info shadow-info text-center border-radius-xl mt-n4 position-absolute">
+                                        <i class="material-icons opacity-10">weekend</i>
+                                    </div>
+                                    <div class="text-end pt-1">
+                                        <p class="text-sm mb-0 text-capitalize">Sales</p>
+                                        <h4 class="mb-0">$103,430</h4>
+                                    </div>
                                 </div>
-                                <div class="text-end pt-1">
-                                    <p class="text-sm mb-0 text-capitalize">Sales</p>
-                                    <h4 class="mb-0">$103,430</h4>
+                                <hr class="dark horizontal my-0">
+                                <div class="card-footer p-3">
+                                    <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+5% </span>than yesterday</p>
                                 </div>
-                            </div>
-                            <hr class="dark horizontal my-0">
-                            <div class="card-footer p-3">
-                                <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+5% </span>than yesterday</p>
                             </div>
                         </div>
-                    </div>
 
-                </div> --}}
+                    </div> --}}
                 <!-- !SECTION: Second Row (Selling Summary) -->
 
                 <!-- SECTION: Footer -->
-                <footer class="footer py-4">
-                    <div class="container-fluid">
-                        <div class="row align-items-center justify-content-lg-between">
+                    <footer class="footer py-4">
+                        <div class="container-fluid">
+                            <div class="row align-items-center justify-content-lg-between">
 
-                            <!-- ANCHOR: Left Footer -->
-                            <div class="col-lg-6 mb-lg-0 mb-4">
-                                <div class="copyright text-center text-sm text-muted text-lg-start">
-                                    © <script>
-                                        document.write(new Date().getFullYear())
-                                    </script>,
-                                    made with <i class="fa fa-heart"></i> by
-                                    <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Creative Tim</a>
-                                    for a better web.
+                                <!-- ANCHOR: Left Footer -->
+                                <div class="col-lg-6 mb-lg-0 mb-4">
+                                    <div class="copyright text-center text-sm text-muted text-lg-start">
+                                        © <script>
+                                            document.write(new Date().getFullYear())
+                                        </script>,
+                                        made with <i class="fa fa-heart"></i> by
+                                        <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Creative Tim</a>
+                                        for a better web.
+                                    </div>
                                 </div>
-                            </div>
 
-                            <!-- ANCHOR: Right Footer -->
-                            <div class="col-lg-6">
-                                <ul class="nav nav-footer justify-content-center justify-content-lg-end">
-                                    <li class="nav-item">
-                                        <a href="https://www.creative-tim.com" class="nav-link text-muted" target="_blank">Creative Tim</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted" target="_blank">About Us</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="https://www.creative-tim.com/blog" class="nav-link text-muted" target="_blank">Blog</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="https://www.creative-tim.com/license" class="nav-link text-muted" target="_blank">License</a>
-                                    </li>
-                                </ul>
-                            </div>
+                                <!-- ANCHOR: Right Footer -->
+                                <div class="col-lg-6">
+                                    <ul class="nav nav-footer justify-content-center justify-content-lg-end">
+                                        <li class="nav-item">
+                                            <a href="https://www.creative-tim.com" class="nav-link text-muted" target="_blank">Creative Tim</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted" target="_blank">About Us</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="https://www.creative-tim.com/blog" class="nav-link text-muted" target="_blank">Blog</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="https://www.creative-tim.com/license" class="nav-link text-muted" target="_blank">License</a>
+                                        </li>
+                                    </ul>
+                                </div>
 
+                            </div>
                         </div>
-                    </div>
-                </footer>
+                    </footer>
                 <!-- !SECTION: Footer -->
 
             </div>
